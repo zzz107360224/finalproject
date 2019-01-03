@@ -1,0 +1,127 @@
+//移動
+int move(int mode)
+{
+	switch (getch())	//不會顯示在螢幕上的讀取方式
+	{
+	case 'w':
+	{
+		q = 1;
+		i += 1;
+		memcpy(b, map, sizeof(map));
+		up();
+		break;
+	}
+	case 's':
+	{
+		q = 1;
+		i += 1;
+		memcpy(b, map, sizeof(map));
+		down();
+		break;
+	}
+	case 'a':
+	{
+		q = 1;
+		i += 1;
+		memcpy(b, map, sizeof(map));
+		left();
+		break;
+	}
+	case 'd':
+	{
+		q = 1;
+		i += 1;
+		memcpy(b, map, sizeof(map));
+		right();
+		break;
+	}
+	case 'r':
+	{
+		switch (mode)
+		{
+		case 1:
+			memcpy(map, map_1, sizeof(map_1));
+			break;
+		case 2:
+			memcpy(map, map_2, sizeof(map_2));
+			break;
+		case 3:
+			memcpy(map, map_3, sizeof(map_3));
+			break;
+		case 4:
+			memcpy(map, map_4, sizeof(map_4));
+			break;
+		case 5:
+			memcpy(map, map_5, sizeof(map_5));
+			break;
+		case 6:
+			memcpy(map, map_6, sizeof(map_6));
+			break;
+		case 7:
+			memcpy(map, map_7, sizeof(map_7));
+			break;
+		case 8:
+			memcpy(map, map_8, sizeof(map_8));
+			break;
+		case 9:
+			memcpy(map, map_9, sizeof(map_9));
+			break;
+		case 10:
+			memcpy(map, map_10, sizeof(map_10));
+			break;
+		}
+		for (i = 0; i < 15; i++)
+		{
+			for (j = 0; j < 15; j++)
+			{
+				b[i][j] = 0;
+			}
+		}
+		i = 0;
+		q = 0;
+		break;
+	}
+	case 'z':
+	{
+		if (q == 1 && i > 0)
+		{
+			i -= 1;
+			memcpy(map, b, sizeof(b));
+			map[0][14] = 1;
+		}
+		q = 0;
+		break;
+	}
+	case 'e':
+	{
+		exit(0);
+	}
+	case 'c':
+	{
+		for (i = 0; i < 15; i++)
+		{
+			for (j = 0; j < 15; j++)
+			{
+				b[i][j] = 0;
+			}
+		}
+		q = 0;
+		i = 0;
+		j = 1;
+		break;
+	}
+	default:
+		break;
+	return map[15][15];
+	}
+}
+int find(int i,int j)
+{
+	for (x = 0; x < i; x++)
+		for (y = 0; y < j; y++)
+		{
+			if (map[x][y] == 3)
+				return 0;
+		}
+	return 0;
+}
